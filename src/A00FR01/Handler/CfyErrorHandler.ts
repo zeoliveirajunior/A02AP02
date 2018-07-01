@@ -15,18 +15,18 @@ import {HttpErrorResponse} from "@angular/common/http";
 import {CLog} from "./CLog";
 
 @Injectable({
-  providedIn: A00FR01
+    providedIn: A00FR01
 })
 export class CfyErrorHandler extends ErrorHandler {
 
-  constructor(private Log:CLog) {
-    super();
-  }
+    constructor(private Log: CLog) {
+        super();
+    }
 
-  handleError(Error: HttpErrorResponse | any) {
-    super.handleError(Error);
-    this.Log.Log(Error, 1, true);
-  }
+    handleError(Error: HttpErrorResponse | any) {
+        super.handleError(Error);
+        this.Log.Log(Error, 1, true);
+    }
 
 
 }

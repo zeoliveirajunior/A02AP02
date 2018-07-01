@@ -1,0 +1,26 @@
+<com-line>
+    <com-combo-box
+            sknLabelField="CFYPADROES_EMPRESA"
+            sknCodeField="CompanyNumber"
+            sknDescField="CompanyDescription"
+            sknSize
+            [(ngModel)]="EmpresaSelecionada"
+            (sknOnChange)="OnChangeEmpresa($event)"
+            [sknDataProvider]="Empresas"></com-combo-box>
+</com-line>
+<com-line>
+    <com-combo-box
+            sknLabelField="CFYPADROES_FILIAL"
+            sknCodeField="BranchNumber"
+            sknDescField="BranchDescription"
+            sknSize
+            [(ngModel)]="FilialSelecionada"
+            [sknDataProvider]="Filiais"></com-combo-box>
+</com-line>
+<div class="modal-footer">
+    <button type="button" (click)="Selecionar()" comButton sknColor="primary" sknIcon="fa-arrow-left" sknText="CFYPADROES_OK"></button>
+    <button type="button" (click)="FecharModal()"  comButton sknColor="danger" sknText="CFYPADROES_FECHAR" sknIcon="fa-sign-out-alt"></button>
+</div>
+
+
+

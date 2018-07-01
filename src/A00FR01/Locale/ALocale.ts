@@ -11,22 +11,16 @@
  ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::*/
 
 
-import {TranslateService} from "@ngx-translate/core";
-import {TranslateCorpPTBR} from "./TranslateCorpPTBR";
+import {TranslateService} from '@ngx-translate/core';
+import {TranslateCorpPTBR} from './TranslateCorpPTBR';
 
 
 export abstract class ALocale {
 
     Translate: TranslateService;
 
-    constructor(Translate: TranslateService ) {
+    constructor(Translate: TranslateService) {
         this.Translate = Translate;
-    }
-
-    protected abstract PTBR();
-
-    protected setTranslate(Json:any, Language = "pt_br") {
-        this.Translate.setTranslation(Language, Json, true);
     }
 
     public setLanguage(Language = 'pt_br') {
@@ -38,6 +32,12 @@ export abstract class ALocale {
         //Corporativo
         this.setTranslate(new TranslateCorpPTBR().AddLanguage());
         this.PTBR();
+    }
+
+    protected abstract PTBR();
+
+    protected setTranslate(Json: any, Language = 'pt_br') {
+        this.Translate.setTranslation(Language, Json, true);
     }
 
 

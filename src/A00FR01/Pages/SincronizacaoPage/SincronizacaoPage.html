@@ -1,0 +1,133 @@
+<!--
+  ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+  ::  Empresa     : Cloudfy                                                     ::
+  ::  Systema     : E00FR01 - Corporativo angular 2                             ::
+  ::  Arquivo     : LoginPage.html                                              ::
+  ::  Tipo        : View/Page                                                   ::
+  ::  Descrição   : HTML da pagina de login default                             ::
+  ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+  ::  Programador : José Carlos de Oliveira Junior                              ::
+  ::  Data        : 18/04/2017                                                  ::
+  ::  Alteração   : Primeira versão                                             ::
+  ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+-->
+
+
+<!-- BEGIN : LOGIN PAGE 5-2 -->
+<div class="user-login-5">
+    <div class="loading-message " style="display: block" *ngIf="!Finalizado">
+        <div class="m-spinner m-spinner--brand m-spinner--lg"></div>
+        <div class="m-spinner m-spinner--primary m-spinner--lg"></div>
+        <div class="m-spinner m-spinner--success m-spinner--lg"></div>
+        <div class="m-spinner m-spinner--info m-spinner--lg"></div>
+        <div class="m-spinner m-spinner--warning m-spinner--lg"></div>
+        <div class="m-spinner m-spinner--danger m-spinner--lg"></div>
+        <h3>Recuperando sincronização...</h3>
+    </div>
+    <div class="note note-success" *ngIf="Finalizado && Erros == 0">
+        <h4 class="block">{{'SINCRONIZACAOPAGE_SISTEMA_SINCRONIZADO' | translate}}
+            <i class="fa fa-check" style="color:#8bb4e7;font-size: 30px;"></i>
+        </h4>
+        <p> {{'SINCRONIZACAOPAGE_SISTEMA_SINCRONIZADO_EXPLICACAO' | translate}}</p>
+    </div>
+    <div *ngIf="Finalizado && Erros > 0" style="display: block;margin: 0 auto;text-align: center;">
+        <h4 style="color: #cf1c28;font-weight: bolder;" >{{'SINCRONIZACAOPAGE_ERROS_TOTAIS' | translate:ParamErros}}</h4>
+        <button type="button" class="btn btn-primary btn-lg" (click)="Sincronizar()">{{"SINCRONIZACAOPAGE_TENTAR_NOVAMENTE" | translate}}</button>
+        <br><br>
+    </div>
+    <div class="portlet-body">
+        <div class="mt-element-list">
+            <div class="mt-list-container list-simple ext-1 group">
+                <a class="list-toggle-container" data-toggle="collapse" href="#completed-simple" aria-expanded="false" *ngIf="RegistrosOK && RegistrosOK.length > 0">
+                    <div class="list-toggle done uppercase"> Completados
+                        <span class="badge badge-default pull-right bg-white font-green bold">{{RegistrosOK ? RegistrosOK.length : 0}}</span>
+                    </div>
+                </a>
+                <div class="panel-collapse collapse in" id="completed-simple">
+                    <ul>
+                        <li class="mt-list-item done" *ngFor="let Registro of RegistrosOK">
+                            <div class="list-icon-container" >
+                                <i class="icon-check" *ngIf="!Registro.Error;else TemplateMain"></i>
+                                <ng-template #TemplateMain>
+                                    <i class="icon-close" style="color: red;"></i>
+                                </ng-template>
+                            </div>
+                            <div class="list-datetime" style="font-size: 10px;" [class.SincronizacaoPage-color-red]="!Registro.Linhas">{{Registro.Linhas ? Registro.Linhas : "Erro ao atualizar"}}</div>
+                            <div class="list-item-content">
+                                <h3 class="uppercase">
+                                    <a href="javascript:;">{{Registro.XX933_VC_TABELA}}</a>
+                                </h3>
+                            </div>
+                        </li>
+                        <!--<li class="mt-list-item done">
+                            <div class="list-icon-container">
+                                <i class="icon-check"></i>
+                            </div>
+                            <div class="list-datetime"> 8 Nov </div>
+                            <div class="list-item-content">
+                                <h3 class="uppercase">
+                                    <a href="javascript:;">Listings Feature</a>
+                                </h3>
+                            </div>
+                        </li>-->
+                    </ul>
+                </div>
+                <a class="list-toggle-container" data-toggle="collapse" href="#pending-simple" aria-expanded="false" *ngIf="RegistrosNOK && RegistrosNOK.length > 0">
+                    <div class="list-toggle uppercase"> Pendentes de sincronização
+                        <span class="badge badge-default pull-right bg-white font-dark bold">{{RegistrosNOK ? RegistrosNOK.length : 0}}</span>
+                    </div>
+                </a>
+                <div class="panel-collapse" id="pending-simple">
+                    <ul>
+                        <li class="mt-list-item" *ngFor="let Registro of RegistrosNOK">
+                            <div class="list-icon-container">
+                                <i class="icon-close"></i>
+                            </div>
+                            <div class="list-datetime">
+                                <div class="m-spinner m-spinner--brand m-spinner--lg"></div>
+                                <div class="m-spinner m-spinner--primary m-spinner--lg"></div>
+                                <div class="m-spinner m-spinner--success m-spinner--lg"></div>
+                                <div class="m-spinner m-spinner--info m-spinner--lg"></div>
+                                <div class="m-spinner m-spinner--warning m-spinner--lg"></div>
+                                <div class="m-spinner m-spinner--danger m-spinner--lg"></div>
+                            </div>
+                            <div class="list-item-content">
+                                <h3 class="uppercase">
+                                    <a href="javascript:;">{{Registro.XX933_VC_TABELA}}</a>
+                                </h3>
+                            </div>
+                        </li>
+                        <!--<li class="mt-list-item">
+                            <div class="list-icon-container">
+                                <i class="icon-close"></i>
+                            </div>
+                            <div class="list-datetime"> 8 Nov </div>
+                            <div class="list-item-content">
+                                <h3 class="uppercase">
+                                    <a href="javascript:;">Listings Feature</a>
+                                </h3>
+                            </div>
+                        </li>
+                        <li class="mt-list-item">
+                            <div class="list-icon-container">
+                                <i class="icon-close"></i>
+                            </div>
+                            <div class="list-datetime"> 8 Nov </div>
+                            <div class="list-item-content">
+                                <h3 class="uppercase">
+                                    <a href="javascript:;">Listings Feature</a>
+                                </h3>
+                            </div>
+                        </li>-->
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br *ngIf="Finalizado">
+    <div style="float: right" *ngIf="Finalizado">
+        <button type="button" (click)="FecharModal(Erros == 0)"  comButton sknColor="danger" sknText="CFYPADROES_FECHAR" sknIcon="fa-sign-out-alt"></button>
+    </div>
+    <br *ngIf="Finalizado"><br *ngIf="Finalizado">
+
+</div>

@@ -1,0 +1,22 @@
+<!--
+  ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+  ::  Empresa     : Cloudfy                                                     ::
+  ::  Systema     : E00FR01 - Angular 2 corporativo                             ::
+  ::  Arquivo     : ComComboBox.html                                            ::
+  ::  Tipo        : Component                                                   ::
+  ::  Descrição   : ComboBox Padrão                                             ::
+  ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+  ::  Programador : José Carlos de Oliveira Junior                              ::
+  ::  Data        : 04/01/2017                                                  ::
+  ::  Alteração   : Primeira versão                                             ::
+  ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+-->
+
+<div class="form-group">
+    <label>{{sknLabelField | translate}}</label>
+    <select [id]="ID" class="form-control" data-live-search="true">
+        <option [value]="Data[sknCodeField]" *ngFor="let Data of sknDataProvider" >{{Data[sknDescField] | translate }}</option>
+    </select>
+    <!--<span *ngFor="let Data of sknDataProvider">{{Data[sknDescField] | translate }}</span>-->
+    <!--<span class="m-form__help">You can add a search input by passing <code>data-live-search="true"</code> attribute</span>-->
+</div>

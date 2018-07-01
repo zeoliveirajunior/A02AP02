@@ -1,0 +1,30 @@
+<!--
+  ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+  ::  Empresa     : Cloudfy                                                     ::
+  ::  Systema     : E02AP01 - Cloud commerce PDV                                ::
+  ::  Arquivo     : CaixaPage.html                                              ::
+  ::  Tipo        : View/Page                                                   ::
+  ::  Descrição   : HTML da pagina de seleção de caixas                         ::
+  ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+  ::  Programador : José Carlos de Oliveira Junior                              ::
+  ::  Data        : 18/04/2017                                                  ::
+  ::  Alteração   : Primeira versão                                             ::
+  ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+-->
+
+
+<com-line>
+    <com-combo-box
+            sknSize="12"
+            sknLabelField="CAIXAS_CBX_TITLE"
+            sknCodeField="CC003_NR_CAIXA"
+            sknDescField="CC003_VC_CAIXA"
+            [(ngModel)]="RS.CC003_NR_CAIXA"
+            [sknDataProvider]="ResultSet"
+    ></com-combo-box>
+</com-line>
+<div class="modal-footer">
+    <button type="button" (click)="SelecionarCaixa()" comButton sknColor="primary" sknIcon="fa-arrow-left" sknText="CFYPADROES_OK"></button>
+    <button type="button" (click)="FecharModal()"  comButton sknColor="danger" sknText="CFYPADROES_FECHAR" sknIcon="fa-sign-out-alt"></button>
+</div>
+

@@ -9,24 +9,20 @@
  ::  Alteração   : Primeira versão                                             ::
  ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::*/
 
-import {forwardRef, Injectable} from "@angular/core";
-import {A00FR01} from "../A00FR01.module";
+import {Injectable} from "@angular/core";
 import {DatePipe, JsonPipe} from "@angular/common";
 import {AppParameters} from "../Services/AppParameters";
 
-@Injectable({
-    providedIn: A00FR01
-})
+@Injectable()
 export class CLog {
 
-    constructor(private AppParameter: AppParameters, private DatePipe: DatePipe, private Json: JsonPipe) {
-
+    constructor(private AppParameter: AppParameters, private DateFunc: DatePipe, private Json: JsonPipe) {
     }
 
-    Log(Message: String | any, LogLevel:number = 1, Error:boolean = false) {
+    Log(Message: String | any, LogLevel: number = 1, Error: boolean = false) {
         if (this.AppParameter.LogLevel >= LogLevel) {
             if (typeof Message === "string") {
-                let _Message = this.DatePipe.transform(new Date(), 'dd/M/yyyy hh:mm:ss') + ' - ' + Message;
+                const _Message = this.DateFunc.transform(new Date(), 'dd/M/yyyy hh:mm:ss') + ' - ' + Message;
                 this.GravarArquivoLog(_Message, Error);
             }
             else {
@@ -42,7 +38,7 @@ export class CLog {
         this.Log(Message, 1, true);
     }
 
-    private GravarArquivoLog(Message: string, Error:boolean) {
+    private GravarArquivoLog(Message: string, Error: boolean) {
         if (Error)
             console.error(Message);
         else

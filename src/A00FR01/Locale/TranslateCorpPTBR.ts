@@ -11,30 +11,42 @@
  ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::*/
 
 
-
 import {ILocale} from "./ALocale";
+
 export class TranslateCorpPTBR implements ILocale {
 
     AddLanguage() {
         return {
-            /**/
-
-
             /**
              * CfyLoginService
              */
-            "CFYLOGINSERVICE_SHOW_WAIT_DEFAULT_MESSAGE" : "Por favor aguarde...",
-            "CFYLOGINSERVICE_ERROR_USUARIO_SEM_PERMISSAO" : "Usuario sem permissão de acesso nesta empresa",
-            "CFYLOGINSERVICE_ERROR_USUARIO_NAO_AUTENTICADO" : "Usuario ou senha inválido(s)",
-            "CFYLOGINSERVICE_ERROR_SERVIDOR_INDISPONIVEL" : "Ocorreu um erro no acesso ao servidor. Por favor, verifique sua conexão com a internet.",
+            "CFYLOGINSERVICE_SHOW_WAIT_DEFAULT_MESSAGE": "Por favor aguarde...",
+            "CFYLOGINSERVICE_ERROR_USUARIO_SEM_PERMISSAO": "Usuario sem permissão de acesso nesta empresa",
+            "CFYLOGINSERVICE_ERROR_USUARIO_NAO_AUTENTICADO": "Usuario ou senha inválido(s)",
+            "CFYLOGINSERVICE_ERROR_SERVIDOR_INDISPONIVEL": "Ocorreu um erro no acesso ao servidor. Por favor, verifique sua conexão com a internet.",
 
             /* CfyDialog */
-            "CFYDIALOG_DEFAULT_TITLE_MESSAGE" : "Cloudfy",
-            "CFYDIALOG_GENERIC_ERROR" : "Ocorreu um problema desconhecido. Por favor, verifique os Logs do sistema",
+            "CFYDIALOG_DEFAULT_TITLE_MESSAGE": "Cloudfy",
+            "CFYDIALOG_GENERIC_ERROR": "Ocorreu um problema desconhecido. Por favor, verifique os Logs do sistema",
+            "A00FR01_GENERIC_ERROR" : "Ops! Ocorreu um erro desconhecido. Por favor, entre em contato com o suporte",
 
             /*CfyQueryService*/
-            "CFYQUERYSERVICE_ERROR_SEM_USUARIO_PREENCHIDO" : "Sessão foi expirada. Por favor, realize o login novamente",
-
+            "CFYQUERYSERVICE_ERROR_SEM_USUARIO_PREENCHIDO": "Sessão foi expirada. Por favor, realize o login novamente",
+            /* COMModal */
+            "COMMODAL_CLOSE": "Fechar",
+            /* Padroes */
+            "CFYPADROES_TITLE" : "Selecione a empresa e filial utilizada",
+            "CFYPADROES_EMPRESA" : "Empresa",
+            "CFYPADROES_FILIAL" : "Filial",
+            "CFYPADROES_OK" : "Selecionar",
+            "CFYPADROES_FECHAR" : "Voltar",
+            "CFYPADROES_ERRO_SELECAO_EMPRESA_FILIAL" : "É preciso selecionar ao menos uma Empresa/Filial",
+            /*Tela Sincronização*/
+            "SINCRONIZACAOPAGE_TITLE": "Sincronização",
+            "SINCRONIZACAOPAGE_ERROS_TOTAIS": "Ocorreram {{Erros}} erro(s) durante a sincronização.",
+            "SINCRONIZACAOPAGE_TENTAR_NOVAMENTE": "Tentar novamente",
+            "SINCRONIZACAOPAGE_SISTEMA_SINCRONIZADO": "Sistema sincronizado!",
+            "SINCRONIZACAOPAGE_SISTEMA_SINCRONIZADO_EXPLICACAO": "Seu sistema já está com todos os dados sincronizado do servidor principal.",
             /* Resultset de SPS corporativas */
             "SPDEFAULT_DUPLICATED_KEY_ERROR": "O registro a ser inserido/alterado já existe na base de dados",
             "PAD01001_MAX_TRY_LOGIN": "Você excedeu o numero de tentativas para realizar o login. Clique em 'Esqueci minha' e siga as instruções para reiniciar a senha.",
@@ -69,9 +81,8 @@ export class TranslateCorpPTBR implements ILocale {
             "PAD01004_TP_PESSOA_INVALIDO": "Identificador de tipo de pessoa {{ENT_VC_TPPESS}} não á válido. Valores esperados (PF - Pessoa física, PJ - Pessoa jurídica).",
             "PAD01004_TP_CATEG_INVALIDO": "Identificador de categoria de pessoa {{ENT_VC_TPPESS}} não á válido. Valores esperados (01 - Cliente, 02 - Fornecedor, 03 - Ambos)",
 
-            "PAD01014_WITHOUT_PERFIL" : "Usuario não possui perfil para login nessa empresa."
-
-        }
+            "PAD01014_WITHOUT_PERFIL": "Usuario não possui perfil para login nessa empresa."
+        };
 
     }
 

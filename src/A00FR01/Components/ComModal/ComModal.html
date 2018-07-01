@@ -1,0 +1,36 @@
+<!--
+  ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+  ::  Empresa     : Cloudfy                                                     ::
+  ::  Systema     : A00FR01 - Angular 2 Corporativo                             ::
+  ::  Tipo        : Component                                                   ::
+  ::  Descrição   : Componente para janelas modais                              ::
+  ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+  ::  Programador : José Carlos de Oliveira Junior                              ::
+  ::  Data        : 29/06/2018                                                  ::
+  ::  Alteração   : Primeira versão                                             ::
+  ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+-->
+
+<div class="modal fade" [id]="Id" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" >{{sknTitle | translate}}</h5>
+                <button *ngIf="sknShowCloseButton" type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div #Template></div>
+            </div>
+            <div class="modal-footer" *ngIf="sknShowCloseButton || (sknBtnBottom && sknBtnBottom.length)">
+                <button *ngFor="let Btn of sknBtnBottom" type="button" class="btn" [ngClass]="Btn.Class"
+                        (click)="OnClickBtnAction(Btn)">{{Btn.Texto | translate}}
+                </button>
+                <button type="button" class="btn btn-secondary" *ngIf="sknShowCloseButton" data-dismiss="modal">
+                    {{"COMMODAL_CLOSE" | translate}}
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

@@ -30,7 +30,9 @@
               /*"node_modules/jquery/dist/jquery.min.js",
               "node_modules/block-ui/jquery.blockUI.js",*/
               "src/assets/vendors.bundle.js",
-              "src/assets/demo/default/base/scripts.bundle.js"
+              "src/assets/demo/default/base/scripts.bundle.js",
+              "node_modules/lokijs/build/lokijs.min.js",
+              "node_modules/lokijs/build/loki-indexed-adapter.min.js"
             ]
           },
           "configurations": {

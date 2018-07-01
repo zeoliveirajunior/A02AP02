@@ -22,4 +22,9 @@ export class MQueryParameters {
     // Se irá mostrar uma mensagem de erro
     public ShowErrorMessage: boolean = true;
 
+    /**
+     * Exec method
+     */
+    NomeExecucaoRemota: string;
+
 }

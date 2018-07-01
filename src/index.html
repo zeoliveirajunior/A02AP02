@@ -10,6 +10,18 @@
 
 </head>
 <body>
-  <app-root style="height: 100%"></app-root>
+  <app-root style="height: 100%">
+      <div class="blockUI blockMsg blockElement"
+           style="z-index: 1011; position: absolute; padding: 0px; margin: 0px; width: 30%;top: 40%;left: 35%; text-align: center; color: rgb(0, 0, 0); border: 0px; cursor: wait;">
+          <div class="loading-message ">
+              <h3 style="color:#fff">${Message}</h3>
+              <div class="block-spinner-bar">
+                  <div class="bounce1" style="background: #3598dc"></div>
+                  <div class="bounce2" style="background: #3598dc"></div>
+                  <div class="bounce3" style="background: #3598dc"></div>
+              </div>
+          </div>
+      </div>
+  </app-root>
 </body>
 </html>

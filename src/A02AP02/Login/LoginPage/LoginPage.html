@@ -47,18 +47,27 @@
                     </div>
                     <!--begin::Form-->
                     <form class="m-login__form m-form" #Form="ngForm">
-                        <div class="form-group m-form__group">
-                            <input class="form-control m-input" type="text" [placeholder]="'LOGIN_PAGE_INFO_USUARIO' | translate"
-                                   ngModel name="UserName"
-                                   required
-                                   autocomplete="off">
-                        </div>
-                        <div class="form-group m-form__group">
+                        <ng-template [ngIf]="!ChangePassword">
+                            <div class="form-group m-form__group">
+                                <input class="form-control m-input" type="text" [placeholder]="'LOGIN_PAGE_INFO_USUARIO' | translate"
+                                       ngModel name="UserName" #UserInput
+                                       required
+                                       autocomplete="off">
+                            </div>
+                            <div class="form-group m-form__group">
+                                <input class="form-control m-input m-login__form-input--last"
+                                       type="password"
+                                       required
+                                       ngModel name="Password"
+                                       [placeholder]="'LOGIN_PAGE_INFO_SENHA' | translate">
+                            </div>
+                        </ng-template>
+                        <div class="form-group m-form__group" *ngIf="ChangePassword">
                             <input class="form-control m-input m-login__form-input--last"
-                                   type="password"
+                                   type="text"
                                    required
-                                   ngModel name="Password"
-                                   [placeholder]="'LOGIN_PAGE_INFO_SENHA' | translate">
+                                   ngModel name="Email"
+                                   [placeholder]="'LOGIN_PAGE_EMAIL' | translate">
                         </div>
                     </form>
 
@@ -66,12 +75,18 @@
 
                     <!--begin::Action-->
                     <div class="m-login__action">
-                        <a href="#" class="m-link">
+                        <a href="#" *ngIf="!ChangePassword" (click)="ChangePassword = true" class="m-link">
                             <span >{{'LOGIN_PAGE_ESQUECEU_SENHA' | translate}}</span>
                         </a>
+                        <button *ngIf="ChangePassword" class="btn btn-warning m-btn m-btn--pill m-btn--custom m-btn--air m-login__btn m-login__btn--primary"
+                                translate="LOGIN_PAGE_BTN_VOLTAR" (click)="ChangePassword = false">
+                        </button>
                         <a href="#">
-                            <button id="m_login_signin_submit" class="btn btn-primary m-btn m-btn--pill m-btn--custom m-btn--air m-login__btn m-login__btn--primary"
+                            <button *ngIf="!ChangePassword" id="m_login_signin_submit" class="btn btn-primary m-btn m-btn--pill m-btn--custom m-btn--air m-login__btn m-login__btn--primary"
                                     translate="LOGIN_PAGE_BTN_ENTRAR" (click)="Login()">
+                            </button>
+                            <button *ngIf="ChangePassword" class="btn btn-primary m-btn m-btn--pill m-btn--custom m-btn--air m-login__btn m-login__btn--primary"
+                                    translate="LOGIN_PAGE_BTN_EMAIL" (click)="TrocarSenha(Form.value.Email)">
                             </button>
                         </a>
                     </div>

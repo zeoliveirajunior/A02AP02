@@ -1,7 +1,6 @@
 /*::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
  ::  Empresa     : Cloudfy                                                     ::
- ::  Systema     : E02AP01 - Cloud commerce PDV                                ::
- ::  Arquivo     : Bootstrap.ts                                                ::
+ ::  Systema     : A02AP02 - Cloud commerce PDV                                ::
  ::  Tipo        : Bootstrap                                                   ::
  ::  Descrição   : Configuração inicial da aplicação                           ::
  ::----------------------------------------------------------------------------::
@@ -10,26 +9,44 @@
  ::  Alteração   : Primeira versão                                             ::
  ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::*/
 
-import {Component} from "@angular/core";
+import {AfterViewInit, Component, Inject, ViewChild, ViewContainerRef} from "@angular/core";
 import {ALocale} from "../A00FR01/Locale/ALocale";
 import {AppParameters} from "../A00FR01/Services/AppParameters";
 import {environment} from "../environments/environment";
+import {LocalDataBaseCC} from "./SQL/LokiImpl/Database";
+import {IUser} from "../A00FR01/NoSQL/Interfaces/IUser";
+import {UserParameter} from "../A00FR01/Interfaces/UserParameter";
+import {CLog} from "../A00FR01/Handler/CLog";
 
 @Component({
     selector: "app-root",
-    template: '<login-page></login-page>'
+    template: '<router-outlet #BootstrapCointainerRef></router-outlet>'
 })
-export class App {
+export class App implements AfterViewInit {
+
+
+    @ViewChild("BootstrapCointainerRef", {read: ViewContainerRef})
+    BootstrapCointainerRef: ViewContainerRef;
 
     /* INICIALIZAÇÕES */
     constructor(LocaleService: ALocale,
-                AppParameter: AppParameters) {
+                @Inject("IUser")
+                private UserDB: IUser,
+                private Log: CLog,
+                private AppParameter: AppParameters) {
+
         /**
          * Inicialização do idioma
          */
         LocaleService.setLanguage();
         LocaleService.Load();
-        AppParameter.Ambiente = environment
+        AppParameter.Ambiente = environment;
+        AppParameter.Database = LocalDataBaseCC;
+        AppParameter.AfterLogin = (Usuario: UserParameter) => {
+            this.UserDB.SaveUser(Usuario).then((Salvo) => {
+                this.Log.Log(`Salvo usuario ${Usuario.UserName} localmente`);
+            });
+        };
         /*/!**
          * Configuração da Aplicação
          *!/
@@ -46,6 +63,10 @@ export class App {
         //Parametros do firebase
         AppParameter.FireBaseConfFile = FireBaseApiKey;*/
 
+    }
+
+    ngAfterViewInit(): void {
+        this.AppParameter.ContainerPrincipal = this.BootstrapCointainerRef;
     }
 }
 
